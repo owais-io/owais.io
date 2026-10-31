@@ -10,6 +10,7 @@ import {
   learningSkills,
   profile,
   projects,
+  recommendation,
   site,
   skills,
   targetRoles,
@@ -30,6 +31,7 @@ import { MobileNav } from "@/components/mobile-nav";
 const nav = [
   { href: "#about", label: "About" },
   { href: "#certifications", label: "Certifications" },
+  { href: "#recommendation", label: "Recommendation" },
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#experience", label: "Experience" },
@@ -65,6 +67,7 @@ export default function Home() {
         <Hero />
         <About />
         <Certifications />
+        <Recommendation />
         <Projects />
         <Skills />
         <Experience />
@@ -308,9 +311,59 @@ function Certifications() {
   );
 }
 
+function Recommendation() {
+  const r = recommendation;
+  return (
+    <Section id="recommendation" eyebrow="03 · Recommendation" title="Reference letter from the CNCF">
+      <Card className="relative overflow-hidden bg-gradient-to-br from-accent-soft to-surface p-7 sm:p-10">
+        <span aria-hidden className="pointer-events-none absolute -top-6 right-4 font-serif text-[10rem] leading-none text-accent/10 sm:right-8">
+          &rdquo;
+        </span>
+        <figure className="relative">
+          <blockquote className="max-w-3xl text-xl font-medium leading-snug tracking-tight sm:text-2xl">
+            &ldquo;{r.quote}&rdquo;
+          </blockquote>
+          <figcaption className="mt-6 flex items-center gap-3">
+            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-accent text-white">
+              <KubeIcon width={20} height={20} />
+            </span>
+            <span>
+              <span className="block text-sm font-semibold">{r.author}</span>
+              <span className="block text-sm text-muted">{r.authorTitle}</span>
+            </span>
+          </figcaption>
+        </figure>
+        <div className="relative mt-8 flex flex-col gap-4 border-t border-border pt-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-muted">
+            <span className="text-2xl font-semibold text-foreground">{r.holders}</span>{" "}
+            Kubestronauts worldwide as of {r.holdersAsOf}, per CNCF program records.
+          </p>
+          <a
+            href={r.pdf}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          >
+            Read the full letter (PDF) <ExternalIcon width={15} height={15} />
+          </a>
+        </div>
+      </Card>
+      <h3 className="mt-10 text-sm font-semibold">What the letter says a Kubestronaut can do</h3>
+      <ul className="mt-4 grid gap-4 sm:grid-cols-2">
+        {r.competencies.map((c) => (
+          <li key={c.title} className="rounded-2xl border border-border bg-surface p-5">
+            <p className="font-semibold">{c.title}</p>
+            <p className="mt-1.5 text-sm text-muted">{c.text}</p>
+          </li>
+        ))}
+      </ul>
+    </Section>
+  );
+}
+
 function Projects() {
   return (
-    <Section id="projects" eyebrow="03 · Projects" title="What I'm building">
+    <Section id="projects" eyebrow="04 · Projects" title="What I'm building">
       <div className="grid gap-5 md:grid-cols-2">
         {projects.map((p) => (
           <Card key={p.name} className="flex flex-col">
@@ -352,7 +405,7 @@ function Projects() {
 
 function Skills() {
   return (
-    <Section id="skills" eyebrow="04 · Skills" title="Technical skills">
+    <Section id="skills" eyebrow="05 · Skills" title="Technical skills">
       <div className="grid gap-5 sm:grid-cols-2">
         {skills.map((s) => (
           <Card key={s.group}>
@@ -382,7 +435,7 @@ function Skills() {
 
 function Experience() {
   return (
-    <Section id="experience" eyebrow="05 · Experience" title="Before DevOps">
+    <Section id="experience" eyebrow="06 · Experience" title="Before DevOps">
       <p className="-mt-4 mb-8 max-w-2xl text-muted">
         Over a decade in finance and government administration: careful record-keeping,
         reconciliation and reporting, which carries over directly into running reliable systems.
@@ -408,7 +461,7 @@ function Experience() {
 
 function Education() {
   return (
-    <Section id="education" eyebrow="06 · Education" title="Education & training">
+    <Section id="education" eyebrow="07 · Education" title="Education & training">
       <div className="grid gap-5 md:grid-cols-3">
         {education.map((e) => (
           <Card key={e.title}>
@@ -439,7 +492,7 @@ function Contact() {
     { href: contact.github, label: "github.com/owais-io", icon: <GitHubIcon />, external: true },
   ];
   return (
-    <Section id="contact" eyebrow="07 · Contact" title="Let's talk">
+    <Section id="contact" eyebrow="08 · Contact" title="Let's talk">
       <Card className="bg-gradient-to-br from-accent-soft to-surface p-8 sm:p-10">
         <p className="max-w-2xl text-lg text-muted">
           Hiring for a junior DevOps, Cloud or Platform role, or just want to chat about

@@ -93,6 +93,34 @@ export const certifications: Certification[] = [
   },
 ];
 
+export const recommendation = {
+  quote:
+    "The Kubestronaut badge held by Owais Abbasi is a credible indicator of significant, verified achievement across Kubernetes knowledge: administration, application delivery, and security.",
+  author: "Christophe Sauthier",
+  authorTitle: "Training and Certification Lead, Cloud Native Computing Foundation (CNCF)",
+  holders: "3,095",
+  holdersAsOf: "early 2026",
+  competencies: [
+    {
+      title: "Cluster operations",
+      text: "Operate and troubleshoot Kubernetes clusters under realistic constraints: core administration, reliability, networking and storage.",
+    },
+    {
+      title: "Application delivery",
+      text: "Build, deploy, configure and debug Kubernetes workloads in a production-oriented manner.",
+    },
+    {
+      title: "Security",
+      text: "Apply Kubernetes security practices to clusters and workloads: hardening, secure configuration and security-focused operations.",
+    },
+    {
+      title: "Cloud native fundamentals",
+      text: "Broad Kubernetes and cloud native knowledge, including the core concepts expected of practitioners in the ecosystem.",
+    },
+  ],
+  pdf: "/kubestronaut-reference-letter.pdf",
+};
+
 export type Project = {
   name: string;
   status: "Ongoing" | "In progress";
